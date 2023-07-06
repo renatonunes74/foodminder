@@ -20,11 +20,10 @@
 </div>
 
 ## Pré-visualização
-![Em breve]()
 Em breve.
 
 ## Porque usar
-- Focado em auxiliar no controle mais amigável do estoque de comida, e possiblidade de integração a outras ferramentas!
+- Focado em auxiliar no controle mais amigável do estoque de comida, e a possibilidade de integração com outras ferramentas!
 
 ## Como usar
 1. Clone o repositório
@@ -47,6 +46,7 @@ Em breve.
     - Frameworks: [Spring Boot](https://spring.io/projects/spring-boot)
     - Bibliotecas: ...
 - Banco de dados: [MySQL](https://www.mysql.com/)
+- Arquitetura: MVC
 - Complementares: [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli)
 
 ## Quando usar
