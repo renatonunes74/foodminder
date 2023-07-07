@@ -20,7 +20,6 @@
 </div>
 
 ## Pré-visualização
-![Em breve]()
 Em breve.
 
 ## Porque usar
