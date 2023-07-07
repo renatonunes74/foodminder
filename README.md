@@ -76,10 +76,10 @@ class Product {
   - id : String
   - name : String
   - price_in_cents : List ~Postagem~
-  + getAllProducts(Long id)
-  + registerProduct(Long id)
-  + updateProduct(Long id)
-  + deleteProduct(Long id)
+  + getAllProducts
+  + registerProduct
+  + updateProduct
+  + deleteProduct
 }
 ```
 # Diagrama de relacionamento
