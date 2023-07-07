@@ -28,26 +28,41 @@ Em breve.
 
 ## Como usar
 1. Clone o repositório
-    - ```git clone https://github.com/renatonunes74/foodminder```
+    - `git clone https://github.com/renatonunes74/foodminder`
+1. Entre na pasta
+    - `cd foodminder/FoodMinder`
 1. Rode localmente
     - CLI / via Terminal:
         - `mvn spring-boot:run`
     - Via IDE (JetBrains, Eclipse...)
+1. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
+- Adicionar, deletar, atualizar novos produtos
+    - Adicionar um novo produto
+        - `curl http://localhost:8080/product`
+    - Atualizar um produto
+        - `curl -d {id:{id}, name:{name}, price_in_cents: {price_in_cents}} -H "Content-Type: application/json" -X PUT http://localhost:8080/product`
+            - exemplo
+                - `curl -d {id:1f7b5b01-a2cc-4f8b-b2d0-2e3db0fae2f0, name:Arroz, price_in_cents: 4000} -H "Content-Type: application/json" -X PUT http://localhost:8080/product`
+    - Deletar um produto
+        - `curl -X DELETE http://localhost:8080/product/{id}`
 - Adicionar, deletar, atualizar novos ingredientes
-    - Preview em breve...
+    - Em breve...
 - Adicionar, deletar, atualizar receitas personalizadas
-    - Preview em breve...
+    - Em breve...
 - Ver quais receitas podem ser feitas
-    - Preview em breve...
+    - Em breve...
 
 ### Tecnologias usadas
 - Linguagem: [Java](https://dev.java/)
     - Frameworks: [Spring Boot](https://spring.io/projects/spring-boot)
-    - Bibliotecas: ...
+    - Bibliotecas:
+        - [Lombok](https://projectlombok.org/) (Anotações para gerar automaticamente métodos getters, setters, construtores, entre outros, em tempo de compilação)
+        - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
 - Banco de dados: [MySQL](https://www.mysql.com/)
-- Complementares: [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli)
+- Complementares:
+     - [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli) (Para a criação do Spring Boot)
 
 ## Quando usar
 - Simples, quando tiver feito uma compra no mercado, liste os itens comprados, além de gerar uma ideia dos custos, também fará uma maior gestão daquilo que consome!
@@ -58,51 +73,24 @@ Em breve.
 ### Diagrama de classes
 ```mermaid
 classDiagram
-class Tema {
-  - id : Long
-  - descricao : String
-  - postagem : List ~Postagem~
-  + getAll()
-  + getById(Long id)
-  + getByDescricao(String descricao)
-  + postTema(Tema tema)
-  + putTema(Tema tema)
-  + deleteTema(Long id)
+class Product {
+  - id : String
+  - name : String
+  - price_in_cents : List ~Postagem~
+  + getAllProducts(Long id)
+  + registerProduct(Long id)
+  + updateProduct(Long id)
+  + deleteProduct(Long id)
 }
-class Postagem {
-  - id : Long
-  - titulo : String
-  - texto: String
-  - data: LocalDateTime
-  - tema : Tema
-  + getAll()
-  + getById(Long id)
-  + getByTitulo(String titulo)
-  + postPostagem(Postagem postagem)
-  + putPostagem(Postagem postagem)
-  + deleteTema(Long id)
-}
-Tema --> Postagem
 ```
 # Diagrama de relacionamento
 ```mermaid
 erDiagram
-    tb_categorias {
-        id BIGINT
-        VARCHAR descricao 
+   	product {
+		VARCHAR id
+		TEXT nome
+		INT price_in_cents 
     }
-
-   	tb_produtos {
-		BIGINT id
-		VARCHAR nome
-		VARCHAR descricao 
-		BIGINT quantidade 
-		DECIMAL preco 
-		VARCHAR foto
-		tb_categorias_id BIGINT
-    }
-
-    tb_categorias ||--o{ tb_produtos : contem
 ```
 
 <!-- ## Alternativas -->
