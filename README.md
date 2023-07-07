@@ -23,7 +23,7 @@
 Em breve.
 
 ## Porque usar
-- Focado em auxiliar no controle mais amigável do estoque de comida, e possiblidade de integração a outras ferramentas!
+- Focado em auxiliar no controle mais amigável do estoque de comida, e a possibilidade de integração com outras ferramentas!
 
 ## Como usar
 1. Clone o repositório
