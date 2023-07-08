@@ -16,11 +16,10 @@
 <!-- [Diagramas](#diagramas) - -->
 <!-- [Alternativas](#alternativas) -->
 <br>
-<br>
 </div>
 
 ## Pré-visualização
-Em breve.
+![](preview.gif)
 
 ## Porque usar
 - Focado em auxiliar no controle mais amigável do estoque de comida, e a possibilidade de integração com outras ferramentas!
@@ -37,21 +36,25 @@ Em breve.
 1. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
-- Adicionar, deletar, atualizar novos produtos
+- Listar, adicionar, deletar, atualizar novos produtos
+    - Listar todos os produtos
+        - `http http://localhost:8080/product`
     - Adicionar um novo produto
-        - `curl http://localhost:8080/product`
+        - `http POST localhost:8080/product name="Nome do Produto" price_in_cents=2500`
     - Atualizar um produto
-        - `curl -d {id:{id}, name:{name}, price_in_cents: {price_in_cents}} -H "Content-Type: application/json" -X PUT http://localhost:8080/product`
-            - exemplo
-                - `curl -d {id:1f7b5b01-a2cc-4f8b-b2d0-2e3db0fae2f0, name:Arroz, price_in_cents: 4000} -H "Content-Type: application/json" -X PUT http://localhost:8080/product`
+        - `http PUT localhost:8080/product id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600`
     - Deletar um produto
-        - `curl -X DELETE http://localhost:8080/product/{id}`
-- Adicionar, deletar, atualizar novos ingredientes
+        - `http DELETE localhost:8080/product/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b`
+- Listar, adicionar, deletar, atualizar novos ingredientes
     - Em breve...
-- Adicionar, deletar, atualizar receitas personalizadas
+- Listar, adicionar, deletar, atualizar receitas personalizadas
     - Em breve...
 - Ver quais receitas podem ser feitas
     - Em breve...
+
+### Dependências necessárias
+- [Java](https://dev.java/)
+- [MySQL](https://www.mysql.com/)
 
 ### Tecnologias usadas
 - Linguagem: [Java](https://dev.java/)
@@ -62,6 +65,8 @@ Em breve.
 - Banco de dados: [MySQL](https://www.mysql.com/)
 - Complementares:
      - [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli) (Para a criação do Spring Boot)
+     - [httpie](https://httpie.io/) (Maior facilidade para requisições HTTP (alternativa ao `curl`))
+     - [VHS](https://github.com/charmbracelet/vhs) (Criação de GIF do terminal via código)
 
 ## Quando usar
 - Simples, quando tiver feito uma compra no mercado, liste os itens comprados, além de gerar uma ideia dos custos, também fará uma maior gestão daquilo que consome!
