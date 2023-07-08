@@ -8,6 +8,6 @@ Set Shell zsh
 Set TypingSpeed 0.2
 Type "http POST localhost:8080/product name='Feijão' price_in_cents=3600; : Postagem de produto" Sleep 2s Enter Sleep 2s
 Type "http localhost:8080/product; : Lista de todos os produtos" Sleep 2s Enter Sleep 2s
-Type "http PUT localhost:8080/product id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Milho de pipoca' price_in_cents=2600: ; Atualizando produto" Sleep 2s Enter Sleep 2s
-Type "http DELETE localhost:8080/product/bf1a783e-ae65-43f8-bd14-6e8c18e99fe3; : Deletanto produto" Sleep 2s Enter Sleep 2s
-Type "http localhost:8080/product; : Alterações feitas" Sleep 2s Enter Sleep 7s
+Type "http PUT localhost:8080/product id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Milho de pipoca' price_in_cents=2600; : Atualizando produto" Sleep 2s Enter Sleep 2s
+	Type "http DELETE localhost:8080/product/128a9689-fd11-4fb5-a886-202834445bf9; : Deletanto produto" Sleep 2s Enter Sleep 2s
+	Type "http localhost:8080/product; : Alterações feitas" Sleep 2s Enter Sleep 7s
