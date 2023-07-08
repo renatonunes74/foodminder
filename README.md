@@ -52,6 +52,8 @@
 - Ver quais receitas podem ser feitas
     - Em breve...
 
+**OBS**: `price_in_cents` é preço em centavos (maior facilidade)
+
 ### Dependências necessárias
 - [Java](https://dev.java/)
 - [MySQL](https://www.mysql.com/)
