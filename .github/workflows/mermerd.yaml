@@ -1,0 +1,24 @@
+# Connection properties
+connectionString: "mysql://projetos:password@tcp(127.0.0.1:3306)/foodminder"
+
+# Define what schemas should be used
+useAllSchemas: true
+# or
+schema: 
+  - "foodminder"
+
+# Define what tables should be used
+useAllTables: true
+# or
+selectedTables:
+  - foodminder.product
+
+# Additional flags
+showAllConstraints: true
+encloseWithMermaidBackticks: true
+outputFileName: "db.mmd"
+debug: true
+omitConstraintLabels: true
+omitAttributeKeys: true
+showSchemaPrefix: true
+schemaPrefixSeparator: "_"
