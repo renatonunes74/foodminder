@@ -66,9 +66,11 @@
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
 - Banco de dados: [MySQL](https://www.mysql.com/)
 - Complementares:
+     - [Mermagic](https://github.com/renatonunes74/mermagic) (Criação automática de diagrama de classes Java usando [Mermaid](https://mermaid.js.org))
+     - [Mermerd](https://github.com/KarnerTh/mermerd) (Criação automática de diagrama de relacionamento)
      - [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli) (Para a criação do Spring Boot)
-     - [httpie](https://httpie.io/) (Maior facilidade para requisições HTTP (alternativa ao `curl`))
      - [VHS](https://github.com/charmbracelet/vhs) (Criação de GIF do terminal via código)
+     - [httpie](https://httpie.io/) (Maior facilidade para requisições HTTP (alternativa ao `curl`))
 
 ## Quando usar
 - Simples, quando tiver feito uma compra no mercado, liste os itens comprados, além de gerar uma ideia dos custos, também fará uma maior gestão daquilo que consome!
@@ -79,24 +81,62 @@
 ### Diagrama de classes
 ```mermaid
 classDiagram
-class Product {
-  - id : String
-  - name : String
-  - price_in_cents : List ~Postagem~
-  + getAllProducts
-  + registerProduct
-  + updateProduct
-  + deleteProduct
+class DemoApplicationTests {
+  void : contextLoads();
 }
+class ProductController {
+  +getAllProducts();
+  +deleteProduct(String);
+  +registerProduct(RequestProduct);
+  +updateProduct(RequestProduct);
+}
+class DemoApplication {
+  +static void main(String[]);
+}
+class Product {
+  -String : id;
+  -String : name;
+  -Integer price_in_cents;
+  -Boolean : active;
+  +String : getId();
+  +String : getName();
+  +Integer : getPrice_in_cents();
+  +Boolean : getActive();
+  +void : setId(String);
+  +void : setName(String);
+  +void : setPrice_in_cents(Integer);
+  +void : setActive(Boolean);
+  +boolean : equals(Object);
+#boolean : canEqual(Object);
+  +int : hashCode();
+}
+class RequestProduct {
+    -String : id;
+    -String : name;
+    -Integer price_in_cents;
+    +String : toString();
+    +int hashCode();
+    +boolean equals(Object);
+    +String : id();
+    +String : name();
+    +Integer price_in_cents();
+}
+class ProductRepository {
+    <<interface>>
+}
+ProductRepository ..|> Product : Realization
+RequestProduct ..|> Record : Realization
 ```
-# Diagrama de relacionamento
+
+### Diagrama de relacionamento
 ```mermaid
 erDiagram
-   	product {
-		VARCHAR id
-		TEXT nome
-		INT price_in_cents 
-    }
+product {
+    varchar id
+        text name 
+        int price_in_cents 
+        tinyint active 
+}
 ```
 
 <!-- ## Alternativas -->
