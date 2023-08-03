@@ -20,6 +20,6 @@ public class Planejamento {
 	@ManyToOne
 	@JoinColumn(name = "tipo_refeicao_id")
 	private TipoRefeicao tipoRefeicao;
-	@OneToMany(mappedBy = "planejamento", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Refeicoes> refeicoes;
+	// @OneToMany(mappedBy = "planejamento", cascade = CascadeType.ALL, orphanRemoval = true)
+	// private List<Refeicoes> refeicoes;
 }

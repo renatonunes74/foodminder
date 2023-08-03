@@ -7,8 +7,8 @@ Set Height 600
 Set Padding 20
 Set Shell zsh
 Set TypingSpeed 0.2
-Type "http POST localhost:8080/product name='Feijão' price_in_cents=861; : Postagem de produto" Sleep 2s Enter Sleep 2s
-Type "http localhost:8080/product; : Lista de todos os produtos" Sleep 2s Enter Sleep 2s
-Type "http PUT localhost:8080/product id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Milho de pipoca' price_in_cents=695; : Atualizando produto" Sleep 2s Enter Sleep 2s
-Type "http DELETE localhost:8080/product/10638a63-a2f5-4052-96e4-2e8b1fe99985; : Deletanto produto" Sleep 2s Enter Sleep 2s
-Type "http localhost:8080/product; : Alterações feitas" Sleep 2s Enter Sleep 7s
+Type "http POST localhost:8080/Planejamento name='Feijão' price_in_cents=861; : Postagem de produto" Sleep 2s Enter Sleep 2s
+Type "http localhost:8080/Planejamento; : Lista de todos os produtos" Sleep 2s Enter Sleep 2s
+Type "http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Milho de pipoca' price_in_cents=695; : Atualizando produto" Sleep 2s Enter Sleep 2s
+Type "http DELETE localhost:8080/Planejamento/10638a63-a2f5-4052-96e4-2e8b1fe99985; : Deletanto produto" Sleep 2s Enter Sleep 2s
+Type "http localhost:8080/Planejamento; : Alterações feitas" Sleep 2s Enter Sleep 7s

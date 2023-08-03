@@ -38,13 +38,13 @@
 ### Funcionalidades
 - Listar, adicionar, deletar, atualizar novos produtos
     - Listar todos os produtos
-        - `http http://localhost:8080/product`
+        - `http http://localhost:8080/Planejamento`
     - Adicionar um novo produto
-        - `http POST localhost:8080/product name="Nome do Produto" price_in_cents=2500`
+        - `http POST localhost:8080/Planejamento name="Nome do Produto" price_in_cents=2500`
     - Atualizar um produto
-        - `http PUT localhost:8080/product id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600`
+        - `http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600`
     - Deletar um produto
-        - `http DELETE localhost:8080/product/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b`
+        - `http DELETE localhost:8080/Planejamento/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b`
 - Listar, adicionar, deletar, atualizar novos ingredientes
     - Em breve...
 - Listar, adicionar, deletar, atualizar receitas personalizadas
@@ -84,16 +84,16 @@ classDiagram
 class DemoApplicationTests {
   void : contextLoads();
 }
-class ProductController {
-  +getAllProducts();
-  +deleteProduct(String);
-  +registerProduct(RequestProduct);
-  +updateProduct(RequestProduct);
+class PlanejamentoController {
+  +getAllPlanejamentos();
+  +deletePlanejamento(String);
+  +registerPlanejamento(RequestPlanejamento);
+  +updatePlanejamento(RequestPlanejamento);
 }
 class DemoApplication {
   +static void main(String[]);
 }
-class Product {
+class Planejamento {
   -String : id;
   -String : name;
   -Integer price_in_cents;
@@ -110,7 +110,7 @@ class Product {
 #boolean : canEqual(Object);
   +int : hashCode();
 }
-class RequestProduct {
+class RequestPlanejamento {
     -String : id;
     -String : name;
     -Integer price_in_cents;
@@ -121,17 +121,17 @@ class RequestProduct {
     +String : name();
     +Integer price_in_cents();
 }
-class ProductRepository {
+class PlanejamentoRepository {
     <<interface>>
 }
-ProductRepository ..|> Product : Realization
-RequestProduct ..|> Record : Realization
+PlanejamentoRepository ..|> Planejamento : Realization
+RequestPlanejamento ..|> Record : Realization
 ```
 
 ### Diagrama de relacionamento
 ```mermaid
 erDiagram
-product {
+Planejamento {
     varchar id
         text name 
         int price_in_cents 
