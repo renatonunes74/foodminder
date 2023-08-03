@@ -37,22 +37,26 @@
 
 ### Funcionalidades
 - Listar, adicionar, deletar, atualizar novos produtos
-    - Listar todos os produtos
-        - `http http://localhost:8080/Planejamento`
-    - Adicionar um novo produto
-        - `http POST localhost:8080/Planejamento name="Nome do Produto" price_in_cents=2500`
-    - Atualizar um produto
-        - `http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600`
-    - Deletar um produto
-        - `http DELETE localhost:8080/Planejamento/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b`
-- Listar, adicionar, deletar, atualizar novos ingredientes
-    - Em breve...
-- Listar, adicionar, deletar, atualizar receitas personalizadas
-    - Em breve...
-- Ver quais receitas podem ser feitas
-    - Em breve...
-
-**OBS**: `price_in_cents` é preço em centavos (maior facilidade)
+    - Listar
+		- Todos os **planejamentos**
+			- `http://localhost:8080/planejamento`
+		- Todas as **refeições**
+			- `http://localhost:8080/refeicoes`
+		- Todos os **tipos de refeições**
+			- `http://localhost:8080/tipoRefeicoes`
+<!--     - Adicionar um novo produto -->
+<!--         - `http POST localhost:8080/Planejamento name="Nome do Produto" price_in_cents=2500` -->
+<!--     - Atualizar um produto -->
+<!--         - `http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600` -->
+<!--     - Deletar um produto -->
+<!--         - `http DELETE localhost:8080/Planejamento/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b` -->
+<!-- - Listar, adicionar, deletar, atualizar novos ingredientes -->
+<!--     - Em breve... -->
+<!-- - Listar, adicionar, deletar, atualizar receitas personalizadas -->
+<!--     - Em breve... -->
+<!-- - Ver quais receitas podem ser feitas -->
+<!--     - Em breve... -->
+<!-- **OBS**: `price_in_cents` é preço em centavos (maior facilidade) -->
 
 ### Dependências necessárias
 - [Java](https://dev.java/)
@@ -78,65 +82,33 @@
 - A aplicação esta em desenvolvimento e por enquanto será possível por meio de requisições HTTP...
 
 ## Diagramas
-### Diagrama de classes
-```mermaid
-classDiagram
-class DemoApplicationTests {
-  void : contextLoads();
-}
-class PlanejamentoController {
-  +getAllPlanejamentos();
-  +deletePlanejamento(String);
-  +registerPlanejamento(RequestPlanejamento);
-  +updatePlanejamento(RequestPlanejamento);
-}
-class DemoApplication {
-  +static void main(String[]);
-}
-class Planejamento {
-  -String : id;
-  -String : name;
-  -Integer price_in_cents;
-  -Boolean : active;
-  +String : getId();
-  +String : getName();
-  +Integer : getPrice_in_cents();
-  +Boolean : getActive();
-  +void : setId(String);
-  +void : setName(String);
-  +void : setPrice_in_cents(Integer);
-  +void : setActive(Boolean);
-  +boolean : equals(Object);
-#boolean : canEqual(Object);
-  +int : hashCode();
-}
-class RequestPlanejamento {
-    -String : id;
-    -String : name;
-    -Integer price_in_cents;
-    +String : toString();
-    +int hashCode();
-    +boolean equals(Object);
-    +String : id();
-    +String : name();
-    +Integer price_in_cents();
-}
-class PlanejamentoRepository {
-    <<interface>>
-}
-PlanejamentoRepository ..|> Planejamento : Realization
-RequestPlanejamento ..|> Record : Realization
-```
+<!-- ### Diagrama de classes -->
+<!-- ```mermaid -->
+<!-- ``` -->
 
 ### Diagrama de relacionamento
 ```mermaid
 erDiagram
-Planejamento {
-    varchar id
-        text name 
-        int price_in_cents 
-        tinyint active 
-}
+    tipo_refeicao {
+        int id PK
+        varchar tipo 
+    }
+
+    planejamento {
+        int id PK
+        date data 
+        int tipo_refeicao_id FK
+    }
+
+    refeicoes {
+        int id PK
+        varchar nome 
+        text receita 
+        int planejamento_id FK
+    }
+
+    planejamento }o--|| tipo_refeicao : "tipo_refeicao_id"
+    refeicoes }o--|| planejamento : "planejamento_id"
 ```
 
 <!-- ## Alternativas -->
