@@ -11,23 +11,23 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/refeicoes")
-public class RefeicoesController {
+@RequestMapping("/refeicao")
+public class RefeicaoController {
     @Autowired
     private RefeicaoRepository repository;
     @GetMapping
-    public ResponseEntity getAllRefeicoes() {
+    public ResponseEntity getAllRefeicao() {
       return(ResponseEntity.ok(repository.findAll()));
     }
     @PostMapping
-    public ResponseEntity registerRefeicoes(@RequestBody @Valid RequestRefeicao data) {
+    public ResponseEntity registerRefeicao(@Valid @RequestBody RequestRefeicao data) {
         Refeicao newRefeicao = new Refeicao(data);
         repository.save(newRefeicao);
         return ResponseEntity.ok().build();
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteRefeicoes(@PathVariable Integer id){
+    public ResponseEntity deleteRefeicao(@PathVariable Integer id){
         if (repository.existsById(id)) {
             repository.deleteById(id);
             return ResponseEntity.noContent().build();
