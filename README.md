@@ -36,27 +36,68 @@
 1. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
-- Listar, adicionar, deletar, atualizar novos produtos
-    - Listar
-		- Todos os **planejamentos**
+- Listar (GET)
+	- **Planejamentos**
+		- [x] Todos
 			- `http://localhost:8080/planejamento`
-		- Todas as **refeições**
-			- `http://localhost:8080/refeicoes`
-		- Todos os **tipos de refeições**
-			- `http://localhost:8080/tipoRefeicoes`
-<!--     - Adicionar um novo produto -->
-<!--         - `http POST localhost:8080/Planejamento name="Nome do Produto" price_in_cents=2500` -->
-<!--     - Atualizar um produto -->
-<!--         - `http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Nome do Produto' price_in_cents=2600` -->
-<!--     - Deletar um produto -->
-<!--         - `http DELETE localhost:8080/Planejamento/5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b` -->
-<!-- - Listar, adicionar, deletar, atualizar novos ingredientes -->
-<!--     - Em breve... -->
-<!-- - Listar, adicionar, deletar, atualizar receitas personalizadas -->
-<!--     - Em breve... -->
-<!-- - Ver quais receitas podem ser feitas -->
-<!--     - Em breve... -->
-<!-- **OBS**: `price_in_cents` é preço em centavos (maior facilidade) -->
+		- [x] Por ID
+			- `http://localhost:8080/planejamento/{id}`
+				- exemplo:
+					- `http://localhost:8080/planejamento/1`
+	-  **Refeições**
+		- [x] Todas
+			- `http://localhost:8080/refeicao`
+		- [ ] Por ID
+	-  **Tipos de refeições**
+		- [x] Todos
+			- `http://localhost:8080/tipoRefeicao`
+		- [ ] Por ID
+- Adicionar (POST)
+	- [x] Novo **planejamento**
+		- `http://localhost:8080/planejamento`
+			- ```json
+				 {
+				  "data": "2023-08-12",
+				  "tipoRefeicao": {
+					"id": 1
+				  },
+				  "refeicao": {
+					"id": 1
+				  }
+				}
+				```
+	- [x] Nova **refeição**
+		- `http://localhost:8080/refeicao`
+			- ```json
+				{
+					"nome": "Lasanha"
+					"receita": "receita.md"
+				}
+				```
+	- [x] Novo **tipo de refeição**
+		- `http://localhost:8080/tipoRefeicao`
+			- ```json
+				{
+					"tipo": "Café da Tarde"
+				}
+				```
+- Atualizar (PUT)
+	- [ ] **Planejamento** por ID
+	- [ ] **Refeição** por ID
+	- [ ] **Tipo de refeição** por ID
+- Deletar (DELETE)
+	- [x] **Planejamento** por ID
+		- `http://localhost:8080/planejamento/{id}`
+			- exemplo
+				- `http://localhost:8080/planejamento/1`
+	- [ ] **Refeição** por ID
+		- `http://localhost:8080/refeicao/{id}`
+			- exemplo
+				- `http://localhost:8080/refeicao/1`
+	- [ ] **Tipo de refeição** por ID
+		- `http://localhost:8080/tipoRefeicao/{id}`
+			- exemplo
+				- `http://localhost:8080/tipoRefeicao/1`
 
 ### Dependências necessárias
 - [Java](https://dev.java/)
@@ -98,17 +139,17 @@ erDiagram
         int id PK
         date data 
         int tipo_refeicao_id FK
+        int refeicao_id FK
     }
 
-    refeicoes {
+    refeicao {
         int id PK
         varchar nome 
         text receita 
-        int planejamento_id FK
     }
 
     planejamento }o--|| tipo_refeicao : "tipo_refeicao_id"
-    refeicoes }o--|| planejamento : "planejamento_id"
+    planejamento }o--|| refeicao : "refeicao_id"
 ```
 
 <!-- ## Alternativas -->

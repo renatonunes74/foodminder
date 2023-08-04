@@ -6,10 +6,16 @@ Set Height 600
 Set Padding 20
 Set Shell zsh
 Set TypingSpeed 0.2
-# Type "http POST localhost:8080/planejamento name='Feijão' price_in_cents=861; : Postagem de produto" Sleep 2s Enter Sleep 2s
+
+# POST 
+Type "http POST :8080/planejamento data='2023-08-12' tipoRefeicao\[id\]=3 refeicao\[id\]=3; : Novo planejamento" Sleep 2s Enter Sleep 2s
+Type "http POST :8080/refeicao nome='Lasanha' receita='receita.md'; : Nova refeição" Sleep 2s Enter Sleep 2s
+Type "http POST :8080/tipoRefeicao tipo='Almoço'; : Novo tipo de refeição" Sleep 2s Enter Sleep 2s
+# GET
 Type "http localhost:8080/planejamento; : Lista de todos os planejamentos" Sleep 2s Enter Sleep 2s
-Type "http localhost:8080/refeicoes; : Lista de todos as refeicoes" Sleep 2s Enter Sleep 2s
+Type "http localhost:8080/refeicao; : Lista de todas as refeições" Sleep 2s Enter Sleep 2s
 Type "http localhost:8080/tipoRefeicao; : Lista de todos os tipos de refeições" Sleep 2s Enter Sleep 2s
-# Type "http PUT localhost:8080/Planejamento id=5d5e5e33-a8a6-4b3e-bb7b-185d52b8671b name='Milho de pipoca' price_in_cents=695; : Atualizando produto" Sleep 2s Enter Sleep 2s
-# Type "http DELETE localhost:8080/Planejamento/10638a63-a2f5-4052-96e4-2e8b1fe99985; : Deletanto produto" Sleep 2s Enter Sleep 2s
-# Type "http localhost:8080/Planejamento; : Alterações feitas" Sleep 2s Enter Sleep 7s
+# PUT
+# DELETE
+
+Type "; : Mais funcionalidades no README" Sleep 2s Enter Sleep 2s
