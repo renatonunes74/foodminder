@@ -1,19 +1,16 @@
-package com.foodminder.FoodMinder.domain.refeicoes;
+package com.foodminder.FoodMinder.domain.refeicao;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.foodminder.FoodMinder.domain.TipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
-import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "refeicoes")
+@Table(name = "refeicao")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Refeicoes {
+public class Refeicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,11 +21,8 @@ public class Refeicoes {
     @Column(nullable = false)
     private String receita;
 
-    @ManyToOne
-    @JoinColumn(name = "planejamento_id")
-    private Planejamento planejamento;
-    public Refeicoes(RequestRefeicoes requestRefeicoes) {
-        this.nome = requestRefeicoes.nome();
-        this.receita = requestRefeicoes.receita();
+    public Refeicao(RequestRefeicao requestRefeicao) {
+        this.nome = requestRefeicao.nome();
+        this.receita = requestRefeicao.receita();
     }
 }
