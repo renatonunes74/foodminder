@@ -47,11 +47,17 @@
 	-  **Refeições**
 		- [x] Todas
 			- `http://localhost:8080/refeicao`
-		- [ ] Por ID
+		- [x] Por ID
+			- `http://localhost:8080/refeicao/{id}`
+				- exemplo:
+					- `http://localhost:8080/refeicao/1`
 	-  **Tipos de refeições**
 		- [x] Todos
 			- `http://localhost:8080/tipoRefeicao`
-		- [ ] Por ID
+		- [x] Por ID
+			- `http://localhost:8080/tipoRefeicao/{id}`
+				- exemplo:
+					- `http://localhost:8080/tipoRefeicao/1`
 - Adicionar (POST)
 	- [x] Novo **planejamento**
 		- `http://localhost:8080/planejamento`
