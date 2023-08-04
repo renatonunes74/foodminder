@@ -1,18 +1,19 @@
 package com.foodminder.FoodMinder.domain.planejamento;
 
-import com.foodminder.FoodMinder.domain.TipoRefeicao.TipoRefeicao;
-import com.foodminder.FoodMinder.domain.refeicoes.Refeicoes;
-import java.util.List;
-import jakarta.validation.constraints.NotBlank;
+import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
+import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
+
 import jakarta.validation.constraints.NotNull;
 
+import java.sql.Ref;
+
 public record RequestPlanejamento(
-		String id,
+		Integer id,
 		@NotNull
 		String data,
 		@NotNull
 		TipoRefeicao tipoRefeicao, // Adicionando o atributo para representar o tipo de refeição
 		@NotNull
-		List<Refeicoes> refeicoes // Adicionando o atributo para representar as refeições associadas ao planejamento
+		Refeicao refeicao // Adicionando o atributo para representar as refeições associadas ao planejamento
 ) {
 }
