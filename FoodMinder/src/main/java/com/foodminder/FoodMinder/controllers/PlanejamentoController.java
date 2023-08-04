@@ -7,6 +7,8 @@ import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
 import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
+import com.foodminder.FoodMinder.entities.PlanejamentoService;
+import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/planejamento")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PlanejamentoController {
+	@Autowired
+	private PlanejamentoService planejamentoService;
 	@Autowired
 	private PlanejamentoRepository repository;
 
@@ -29,41 +34,33 @@ public class PlanejamentoController {
 	@Autowired
 	private TipoRefeicaoRepository tipoRefeicaoRepository;
 
-
 	@GetMapping
 	public ResponseEntity getAllPlanejamento() {
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(planejamentoService.obterTodosPlanejamentos());
 	}
 	@PostMapping
 	public ResponseEntity registerPlanejamento(@Valid @RequestBody RequestPlanejamento requestData) {
-		Refeicao refeicao = refeicaoRepository.findById(requestData.refeicao().getId()).orElseThrow(EntityNotFoundException::new);
-		TipoRefeicao tipoRefeicao = tipoRefeicaoRepository.findById(requestData.tipoRefeicao().getId()).orElseThrow(EntityNotFoundException::new);
-		Planejamento newPlanejamento = new Planejamento();
-		newPlanejamento.setData(requestData.data());
-		newPlanejamento.setRefeicao(refeicao);
-		newPlanejamento.setTipoRefeicao(tipoRefeicao);
-
-		Planejamento savedPlanejamento = repository.save(newPlanejamento);
+		Planejamento savedPlanejamento = planejamentoService.registrarPlanejamento(requestData);
 		return ResponseEntity.ok(savedPlanejamento);
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getPlanejamentoById(@PathVariable Integer id) {
-		Optional<Planejamento> planejamentoOptional = repository.findById(id);
-		if (planejamentoOptional.isPresent()) {
-			Planejamento planejamento = planejamentoOptional.get();
+	public ResponseEntity getPlanejamentoById(@PathVariable Integer id) {
+		try {
+			Planejamento planejamento = planejamentoService.obterPlanejamentoPorId(id);
 			return ResponseEntity.ok(planejamento);
-		} else {
+		} catch (RecursoNaoEncontrado e) {
 			return ResponseEntity.notFound().build();
 		}
 	}
 	 @DeleteMapping("/{id}")
 	 @Transactional
-	 public ResponseEntity deletePlanejamento(@PathVariable Integer id){
-	 	if (repository.existsById(id)) {
-	 		repository.deleteById(id);
-	 		return ResponseEntity.noContent().build();
-	 	} else {
-	 		throw new EntityNotFoundException();
-	 	}
+	 public ResponseEntity deletePlanejamento(@PathVariable Integer id) {
+		 try {
+			 Planejamento planejamento = planejamentoService.deletarPlanejamentoPorId(id);
+			 return ResponseEntity.noContent().build();
+		 } catch (RecursoNaoEncontrado e) {
+			 return ResponseEntity.notFound().build();
+		 }
 	 }
+
 }
