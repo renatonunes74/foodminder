@@ -1,1 +1,9 @@
+com/foodminder/FoodMinder/domain/refeicao/Refeicao.class
+com/foodminder/FoodMinder/domain/refeicao/RequestRefeicao.class
+com/foodminder/FoodMinder/domain/tipoRefeicao/RequestTipoRefeicao.class
 com/foodminder/FoodMinder/DemoApplication.class
+com/foodminder/FoodMinder/domain/planejamento/PlanejamentoRepository.class
+com/foodminder/FoodMinder/domain/tipoRefeicao/TipoRefeicao.class
+com/foodminder/FoodMinder/domain/refeicao/RefeicaoRepository.class
+com/foodminder/FoodMinder/domain/planejamento/RequestPlanejamento.class
+com/foodminder/FoodMinder/domain/planejamento/Planejamento.class

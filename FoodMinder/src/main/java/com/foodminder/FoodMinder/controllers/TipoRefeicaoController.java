@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/tipoRefeicao")
 public class TipoRefeicaoController {
@@ -18,6 +20,16 @@ public class TipoRefeicaoController {
     @GetMapping
     public ResponseEntity getAllTipoRefeicao() {
         return ResponseEntity.ok(repository.findAll());
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTipoRefeicaoById(@PathVariable Integer id) {
+        Optional<TipoRefeicao> tipoRefeicaoOptional = repository.findById(id);
+        if (tipoRefeicaoOptional.isPresent()) {
+            TipoRefeicao planejamento = tipoRefeicaoOptional.get();
+            return ResponseEntity.ok(planejamento);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     @PostMapping
     public ResponseEntity registerTipoRefeicao(@RequestBody @Valid RequestTipoRefeicao data) {
