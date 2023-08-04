@@ -1,4 +1,4 @@
-package com.foodminder.FoodMinder.domain.TipoRefeicao;
+package com.foodminder.FoodMinder.domain.tipoRefeicao;
 
 import jakarta.validation.constraints.NotNull;
 

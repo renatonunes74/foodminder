@@ -1,9 +1,7 @@
-package com.foodminder.FoodMinder.domain.TipoRefeicao;
+package com.foodminder.FoodMinder.domain.tipoRefeicao;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
 
 @Table(name="tipo_refeicao")
 @Entity(name="tipo_refeicao")
