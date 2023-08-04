@@ -1,8 +1,11 @@
 package com.foodminder.FoodMinder.controllers;
 
+import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
 import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
 import com.foodminder.FoodMinder.domain.refeicao.RequestRefeicao;
+import com.foodminder.FoodMinder.entities.RefeicaoService;
+import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Ref;
 import java.util.Optional;
 
 @RestController
@@ -17,19 +21,20 @@ import java.util.Optional;
 public class RefeicaoController {
     @Autowired
     private RefeicaoRepository repository;
+    @Autowired
+    private RefeicaoService refeicaoService;
     @GetMapping
     public ResponseEntity getAllRefeicao() {
-      return(ResponseEntity.ok(repository.findAll()));
+      return ResponseEntity.ok(refeicaoService.obterTodasRefeicoes());
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> getRefeicaoById(@PathVariable Integer id) {
-        Optional<Refeicao> refeicaoOptional = repository.findById(id);
-        if (refeicaoOptional.isPresent()) {
-            Refeicao planejamento = refeicaoOptional.get();
-            return ResponseEntity.ok(planejamento);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity getRefeicaoById(@PathVariable Integer id) {
+            try {
+                Refeicao refeicao = refeicaoService.obterRefeicaoPorId(id);
+                return ResponseEntity.ok(refeicao);
+            } catch (RecursoNaoEncontrado e) {
+                return ResponseEntity.notFound().build();
+            }
     }
     @PostMapping
     public ResponseEntity registerRefeicao(@Valid @RequestBody RequestRefeicao data) {
@@ -39,12 +44,12 @@ public class RefeicaoController {
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity deleteRefeicao(@PathVariable Integer id){
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
+    public ResponseEntity deleteRefeicao(@PathVariable Integer id) {
+        try {
+            Refeicao refeicao = refeicaoService.deletarRefeicaoPorId(id);
             return ResponseEntity.noContent().build();
-        } else {
-            throw new EntityNotFoundException();
+        } catch (RecursoNaoEncontrado e) {
+            return ResponseEntity.notFound().build();
         }
     }
 }
