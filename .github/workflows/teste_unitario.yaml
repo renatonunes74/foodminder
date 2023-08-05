@@ -6,7 +6,6 @@ on:
       - 'main'
     paths:
       - 'FoodMinder/**'
-	
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +20,4 @@ jobs:
           distribution: 'zulu'
 
       - name: Execução do teste unitário
-        run: |
-			cd FoodMinder
-			mvn clean test
+        run: mvn clean test -f FoodMinder
