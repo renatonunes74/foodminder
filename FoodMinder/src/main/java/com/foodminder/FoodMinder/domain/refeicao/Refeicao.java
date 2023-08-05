@@ -1,6 +1,5 @@
 package com.foodminder.FoodMinder.domain.refeicao;
 
-import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import jakarta.persistence.*;
 import lombok.*;
 
