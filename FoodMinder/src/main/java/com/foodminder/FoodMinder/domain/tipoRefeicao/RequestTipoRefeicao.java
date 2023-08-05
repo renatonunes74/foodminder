@@ -1,10 +1,10 @@
 package com.foodminder.FoodMinder.domain.tipoRefeicao;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public record RequestTipoRefeicao(
 		Integer id,
-		@NotNull
+		@NotBlank(message = "Tipo de refeição é obrigatório")
 		String tipo
 ) {
 }

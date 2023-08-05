@@ -1,13 +1,12 @@
 package com.foodminder.FoodMinder.domain.refeicao;
 
-import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public record RequestRefeicao(
 		Integer id,
-		@NotNull
+		@NotBlank(message = "Nome é obrigatório")
 		String nome,
-		@NotNull
+		@NotBlank(message = "Receita é obrigatório")
 		String receita
 ) {
 }

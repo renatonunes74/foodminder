@@ -1,9 +1,7 @@
 package com.foodminder.FoodMinder.domain.planejamento;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface PlanejamentoRepository extends JpaRepository<Planejamento, Integer> {
-    List<Planejamento> findAllById(Integer id);
-}
+@Repository
+public interface PlanejamentoRepository extends JpaRepository<Planejamento, Integer> {}
