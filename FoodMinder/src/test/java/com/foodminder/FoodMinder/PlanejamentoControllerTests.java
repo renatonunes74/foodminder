@@ -3,7 +3,6 @@ package com.foodminder.FoodMinder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.planejamento.PlanejamentoRepository;
-import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;
 import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.services.PlanejamentoService;
@@ -23,14 +22,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class PlanejamentoControllerTests {
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
+    @Autowired
     private PlanejamentoService planejamentoService;
     @Autowired
     private ObjectMapper objectMapper;
     private Planejamento planejamento;
     @MockBean
     private PlanejamentoRepository planejamentoRepository;
-    private RequestPlanejamento requestPlanejamento;
     private Refeicao refeicao;
     private TipoRefeicao tipoRefeicao;
 
@@ -42,7 +40,7 @@ public class PlanejamentoControllerTests {
         refeicao.setId(3);
         tipoRefeicao.setId(3);
 
-        planejamento = new Planejamento();
+        Planejamento planejamento = new Planejamento();
         planejamento.setData("2023-08-12");
         planejamento.setTipoRefeicao(tipoRefeicao);
         planejamento.setRefeicao(refeicao);
