@@ -52,7 +52,7 @@ public class PlanejamentoControllerTests {
         planejamentoRepository.deleteAll();
     }
     @Test
-    @DisplayName("Lista todos os planejamentos")
+    @DisplayName("Listar todos os planejamentos")
     public void PlanejamentoController_GetAllPlanejamento_ReturnOk() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/planejamento"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
