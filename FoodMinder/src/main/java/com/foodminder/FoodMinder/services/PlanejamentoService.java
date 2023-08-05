@@ -1,4 +1,4 @@
-package com.foodminder.FoodMinder.entities;
+package com.foodminder.FoodMinder.services;
 
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.planejamento.PlanejamentoRepository;

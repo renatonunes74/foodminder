@@ -3,21 +3,15 @@ package com.foodminder.FoodMinder.controllers;
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.planejamento.PlanejamentoRepository;
 import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;
-import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
-import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
 import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
-import com.foodminder.FoodMinder.entities.PlanejamentoService;
+import com.foodminder.FoodMinder.services.PlanejamentoService;
 import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/planejamento")

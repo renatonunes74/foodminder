@@ -1,26 +1,21 @@
 package com.foodminder.FoodMinder.controllers;
 
-import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
 import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
 import com.foodminder.FoodMinder.domain.refeicao.RequestRefeicao;
-import com.foodminder.FoodMinder.entities.RefeicaoService;
+import com.foodminder.FoodMinder.services.RefeicaoService;
 import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Ref;
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/refeicao")
 public class RefeicaoController {
     @Autowired
-    private RefeicaoRepository repository;
+    private RefeicaoRepository refeicaoRepository;
     @Autowired
     private RefeicaoService refeicaoService;
     @GetMapping
@@ -39,7 +34,7 @@ public class RefeicaoController {
     @PostMapping
     public ResponseEntity registerRefeicao(@Valid @RequestBody RequestRefeicao data) {
         Refeicao newRefeicao = new Refeicao(data);
-        repository.save(newRefeicao);
+        refeicaoRepository.save(newRefeicao);
         return ResponseEntity.ok().build();
     }
     @DeleteMapping("/{id}")
