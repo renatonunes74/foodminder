@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Builder
-@Entity
 @Table(name = "planejamento")
 @Entity(name = "planejamento")
 @Getter
