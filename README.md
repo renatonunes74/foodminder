@@ -13,7 +13,6 @@
 [Quando usar](#quando-usar) -
 [Aonde usar](#aonde-usar) -
 [Diagramas](#diagramas)
-[Diagramas](#diagramas)
 <br>
 </div>
 
@@ -114,6 +113,7 @@
     - Bibliotecas:
         - [Lombok](https://projectlombok.org/) (Anotações para gerar automaticamente métodos getters, setters, construtores, entre outros, em tempo de compilação)
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
+        - [Pitest](https://pitest.org/) (Testes de mutação)
 - Banco de dados: [MySQL](https://www.mysql.com/)
 - Complementares:
      - [Mermagic](https://github.com/renatonunes74/mermagic) (Criação automática de diagrama de classes Java usando [Mermaid](https://mermaid.js.org))
@@ -157,8 +157,9 @@ erDiagram
     planejamento }o--|| refeicao : "refeicao_id"
 ```
 
-<!-- ## Alternativas -->
-<!-- - [FoodMinder CLI]() -->
+## Alternativas
+- [MealCLI](https://github.com/renatonunes74/meal)
+	- Gerenciador de refeições CLI usando SHELL
 
 ## Contribuição
 Estou aberto a contribuições, feedback e opiniões da comunidade! Se você tiver alguma ideia para melhorar o projeto, correções de bugs ou sugestões de novos recursos, ficarei feliz em receber sua contribuição! Basta enviar um Pull Request no repositório do projeto.
