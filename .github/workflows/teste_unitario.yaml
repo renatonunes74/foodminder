@@ -28,6 +28,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-          cache: 'maven'
+          cache: maven
       - name: Iniciando teste
-        run: mvn -B package --file FoodMinder/pom.xml
+        run: cd FoodMinder && mvn --batch-mode --update-snapshots verify
