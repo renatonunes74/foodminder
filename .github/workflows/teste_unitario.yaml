@@ -28,5 +28,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
+          cache: 'maven'
       - name: Iniciando teste
         run: mvn -B package --file FoodMinder/pom.xml
