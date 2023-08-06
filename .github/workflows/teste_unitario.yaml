@@ -13,6 +13,7 @@ jobs:
       mysql:
         image: mysql:8.1
         env:
+          MYSQL_ROOT_PASSWORD: root_password
           MYSQL_DATABASE: foodminder
           MYSQL_USER: projetos
           MYSQL_PASSWORD: password
