@@ -54,7 +54,7 @@ public class PlanejamentoControllerTests {
         planejamento1.setRefeicao(refeicao);
 
         Planejamento planejamento2 = new Planejamento();
-        planejamento1.setId(2);
+        planejamento2.setId(2);
         planejamento2.setData("2023-08-24");
         planejamento2.setTipoRefeicao(tipoRefeicao);
         planejamento2.setRefeicao(refeicao);
@@ -71,9 +71,11 @@ public class PlanejamentoControllerTests {
         mockMvc.perform(MockMvcRequestBuilders.get("/planejamento"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].id").value(1))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].data").value("2023-08-12"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].refeicao.id").value(3))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].tipoRefeicao.id").value(3))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[1].id").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[1].data").value("2023-08-24"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[1].refeicao.id").value(3))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[1].tipoRefeicao.id").value(3))
@@ -86,6 +88,7 @@ public class PlanejamentoControllerTests {
         if (id == 1) {
             mockMvc.perform(MockMvcRequestBuilders.get("/planejamento/" + id))
                     .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
                     .andExpect(MockMvcResultMatchers.jsonPath("$.data").value("2023-08-12"))
                     .andExpect(MockMvcResultMatchers.jsonPath("$.refeicao.id").value(3))
                     .andExpect(MockMvcResultMatchers.jsonPath("$.tipoRefeicao.id").value(3))
