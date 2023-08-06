@@ -13,8 +13,7 @@
 [Quando usar](#quando-usar) -
 [Aonde usar](#aonde-usar) -
 [Diagramas](#diagramas)
-<!-- [Diagramas](#diagramas) - -->
-<!-- [Alternativas](#alternativas) -->
+[Diagramas](#diagramas)
 <br>
 </div>
 
@@ -96,11 +95,11 @@
 		- `http://localhost:8080/planejamento/{id}`
 			- exemplo
 				- `http://localhost:8080/planejamento/1`
-	- [ ] **Refeição** por ID
+	- [x] **Refeição** por ID
 		- `http://localhost:8080/refeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/refeicao/1`
-	- [ ] **Tipo de refeição** por ID
+	- [x] **Tipo de refeição** por ID
 		- `http://localhost:8080/tipoRefeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/tipoRefeicao/1`
