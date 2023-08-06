@@ -9,21 +9,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: foodminder
+          MYSQL_USER: projetos
+          MYSQL_PASSWORD: password
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - name: Setup - Projeto
         uses: actions/checkout@v3
-
       - name: Setup - JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: '17'
           distribution: 'zulu'
-      - name: Setup - MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          host port: 3306
-          mysql database: 'foodminder' # Optional, default value is "test". The specified database which will be create
-          mysql user: 'projetos' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-          mysql password: password # Required if "mysql user" exists. The password for the "mysql user"
       - name: Iniciando teste
         run: mvn clean test -f FoodMinder
