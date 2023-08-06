@@ -3,6 +3,7 @@ package com.foodminder.FoodMinder.domain.refeicao;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Builder
 @Entity
 @Table(name = "refeicao")
 @Getter

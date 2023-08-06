@@ -12,9 +12,8 @@
 [Como usar](#como-usar) -
 [Quando usar](#quando-usar) -
 [Aonde usar](#aonde-usar) -
+[Testes](#testes) -
 [Diagramas](#diagramas)
-<!-- [Diagramas](#diagramas) - -->
-<!-- [Alternativas](#alternativas) -->
 <br>
 </div>
 
@@ -96,11 +95,11 @@
 		- `http://localhost:8080/planejamento/{id}`
 			- exemplo
 				- `http://localhost:8080/planejamento/1`
-	- [ ] **Refeição** por ID
+	- [x] **Refeição** por ID
 		- `http://localhost:8080/refeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/refeicao/1`
-	- [ ] **Tipo de refeição** por ID
+	- [x] **Tipo de refeição** por ID
 		- `http://localhost:8080/tipoRefeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/tipoRefeicao/1`
@@ -115,6 +114,7 @@
     - Bibliotecas:
         - [Lombok](https://projectlombok.org/) (Anotações para gerar automaticamente métodos getters, setters, construtores, entre outros, em tempo de compilação)
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
+        - [Pitest](https://pitest.org/) (Testes de mutação)
 - Banco de dados: [MySQL](https://www.mysql.com/)
 - Complementares:
      - [Mermagic](https://github.com/renatonunes74/mermagic) (Criação automática de diagrama de classes Java usando [Mermaid](https://mermaid.js.org))
@@ -127,6 +127,11 @@
 - Simples, quando tiver feito uma compra no mercado, liste os itens comprados, além de gerar uma ideia dos custos, também fará uma maior gestão daquilo que consome!
 ## Aonde usar
 - A aplicação esta em desenvolvimento e por enquanto será possível por meio de requisições HTTP...
+
+## Testes
+### Testes por mutação e cobertura
+- **06-08-2023**
+	- ![Pitest](foodminder_pitest.png)
 
 ## Diagramas
 <!-- ### Diagrama de classes -->
@@ -158,8 +163,9 @@ erDiagram
     planejamento }o--|| refeicao : "refeicao_id"
 ```
 
-<!-- ## Alternativas -->
-<!-- - [FoodMinder CLI]() -->
+## Alternativas
+- [MealCLI](https://github.com/renatonunes74/meal)
+	- Gerenciador de refeições CLI usando SHELL
 
 ## Contribuição
 Estou aberto a contribuições, feedback e opiniões da comunidade! Se você tiver alguma ideia para melhorar o projeto, correções de bugs ou sugestões de novos recursos, ficarei feliz em receber sua contribuição! Basta enviar um Pull Request no repositório do projeto.
