@@ -12,6 +12,7 @@
 [Como usar](#como-usar) -
 [Quando usar](#quando-usar) -
 [Aonde usar](#aonde-usar) -
+[Testes](#testes) -
 [Diagramas](#diagramas)
 <br>
 </div>
@@ -126,6 +127,11 @@
 - Simples, quando tiver feito uma compra no mercado, liste os itens comprados, além de gerar uma ideia dos custos, também fará uma maior gestão daquilo que consome!
 ## Aonde usar
 - A aplicação esta em desenvolvimento e por enquanto será possível por meio de requisições HTTP...
+
+## Testes
+### Testes por mutação e cobertura
+- **06-08-2023**
+	- ![Pitest](foodminder_pitest.png)
 
 ## Diagramas
 <!-- ### Diagrama de classes -->
