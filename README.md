@@ -35,8 +35,8 @@
 1. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
-- Usuario (Login)
-	- Adicionar
+- Usuario
+	- Cadastrar
 		- `http://localhost:8080/auth/registrar`
 			- ```json
 				{
@@ -111,6 +111,7 @@
 	- [ ] **Planejamento** por ID
 	- [ ] **Refeição** por ID
 	- [ ] **Tipo de refeição** por ID
+	- [ ] **Usuario por ID**
 - Deletar (DELETE)
 	- [x] **Planejamento** por ID
 		- `http://localhost:8080/planejamento/{id}`
@@ -124,6 +125,7 @@
 		- `http://localhost:8080/tipoRefeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/tipoRefeicao/1`
+	- [ ] **Usuario por ID**
 
 ### Dependências necessárias
 - [Java](https://dev.java/)
