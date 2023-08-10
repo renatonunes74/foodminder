@@ -3,12 +3,17 @@ package com.foodminder.FoodMinder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.planejamento.PlanejamentoRepository;
+import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;
 import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
+import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
+import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
 import com.foodminder.FoodMinder.services.PlanejamentoService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +27,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
@@ -38,6 +44,10 @@ public class PlanejamentoControllerTests {
     private PlanejamentoRepository planejamentoRepository;
     private Refeicao refeicao;
     private TipoRefeicao tipoRefeicao;
+    @MockBean
+    private TipoRefeicaoRepository tipoRefeicaoRepository;
+    @MockBean
+    private RefeicaoRepository refeicaoRepository;
 
     @BeforeEach
     public void setup() {
@@ -102,11 +112,18 @@ public class PlanejamentoControllerTests {
 
     @Test
     @DisplayName("Registrar planejamento")
-    public void PlanejamentoController_RegisterPlanejamento_ReturnCreated() throws Exception {
+    public void PlanejamentoController_RegisterPlanejamento_ReturnCreated() throws Exception {;
+
+        Refeicao refeicao1 = new Refeicao(3, "aaaaaa", "arsarsars");
+        TipoRefeicao tipoRefeicao1 = new TipoRefeicao(3, "arsars");
+
+        when(refeicaoRepository.findById(3)).thenReturn(Optional.of(refeicao1));
+        when(tipoRefeicaoRepository.findById(3)).thenReturn(Optional.of(tipoRefeicao1));
+
         Planejamento planejamento = Planejamento.builder()
                 .data("2023-02-11")
-                .tipoRefeicao(tipoRefeicao)
-                .refeicao(refeicao)
+                .tipoRefeicao(tipoRefeicao1)
+                .refeicao(refeicao1)
                 .build();
         String planejamentoRequest = objectMapper.writeValueAsString(planejamento);
         mockMvc.perform(MockMvcRequestBuilders.post("/planejamento")
