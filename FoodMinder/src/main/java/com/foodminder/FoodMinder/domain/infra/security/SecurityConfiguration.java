@@ -29,9 +29,8 @@ public class SecurityConfiguration {
                         //.anyRequest().permitAll() Para configurar sem necessidade de token
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/registrar").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/planejamento").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/receita").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "/tipoRefeicao").hasRole("USER")
+                        // Para requisição do endpoint apenas para ADMIN's
+                        // .requestMatchers(HttpMethod.POST, "/planejamento").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
