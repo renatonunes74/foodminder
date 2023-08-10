@@ -1,6 +1,5 @@
 package com.foodminder.FoodMinder.domain.usuario;
 
-import com.foodminder.FoodMinder.domain.usuario.UsuarioRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
