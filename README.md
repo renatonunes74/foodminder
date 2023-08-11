@@ -35,6 +35,27 @@
 1. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
+- Usuario
+	- Cadastrar
+		- `http://localhost:8080/auth/registrar`
+			- ```json
+				{
+					"login": "nome",
+					"password": "senha",
+					"role": "USER"
+				}
+			  ```
+				- Aonde `"role":`
+					- pode ter `"USER"` ou `"ADMIN"`
+	- Logar
+		- `http://localhost:8080/auth/login`
+			- ```json
+				{
+					"login": "nome",
+					"password": "senha",
+				}
+			  ```
+- **OBS:** Usar o `Authorization: Bearer {token}` nas requisições abaixo:
 - Listar (GET)
 	- **Planejamentos**
 		- [x] Todos
@@ -90,6 +111,7 @@
 	- [ ] **Planejamento** por ID
 	- [ ] **Refeição** por ID
 	- [ ] **Tipo de refeição** por ID
+	- [ ] **Usuario por ID**
 - Deletar (DELETE)
 	- [x] **Planejamento** por ID
 		- `http://localhost:8080/planejamento/{id}`
@@ -103,6 +125,7 @@
 		- `http://localhost:8080/tipoRefeicao/{id}`
 			- exemplo
 				- `http://localhost:8080/tipoRefeicao/1`
+	- [ ] **Usuario por ID**
 
 ### Dependências necessárias
 - [Java](https://dev.java/)
@@ -110,7 +133,9 @@
 
 ### Tecnologias usadas
 - Linguagem: [Java](https://dev.java/)
-    - Frameworks: [Spring Boot](https://spring.io/projects/spring-boot)
+    - Frameworks: 
+		- [Spring Boot](https://spring.io/projects/spring-boot)
+		- [Spring Security](https://spring.io/projects/spring-security)
     - Bibliotecas:
         - [Lombok](https://projectlombok.org/) (Anotações para gerar automaticamente métodos getters, setters, construtores, entre outros, em tempo de compilação)
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
