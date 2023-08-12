@@ -3,6 +3,8 @@ package com.foodminder.FoodMinder.domain.refeicao;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Builder
 @Entity
 @Table(name = "refeicao")
@@ -10,7 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Refeicao {
+public class Refeicao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
