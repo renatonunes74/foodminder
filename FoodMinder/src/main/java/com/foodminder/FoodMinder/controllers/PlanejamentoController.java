@@ -1,9 +1,9 @@
 package com.foodminder.FoodMinder.controllers;
 
 import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;;
-import com.foodminder.FoodMinder.domain.rabbitmq.constantes.RabbitMQConstantes;
+//import com.foodminder.FoodMinder.domain.rabbitmq.constantes.RabbitMQConstantes;
 import com.foodminder.FoodMinder.services.PlanejamentoService;
-import com.foodminder.FoodMinder.services.RabbitMQService;
+//import com.foodminder.FoodMinder.services.RabbitMQService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
