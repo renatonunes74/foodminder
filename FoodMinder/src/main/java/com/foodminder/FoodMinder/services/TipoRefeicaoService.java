@@ -24,9 +24,7 @@ public class TipoRefeicaoService {
         if (tipoRefeicaoOptional.isPresent()) {
             TipoRefeicao tipoRefeicao = tipoRefeicaoOptional.get();
             return tipoRefeicao;
-            //return ResponseEntity.ok(tipoRefeicao);
         } else {
-            //return ResponseEntity.notFound().build();
             throw new RecursoNaoEncontrado("TipoRefeicao not found with id: " + id);
         }
     }
