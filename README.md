@@ -142,10 +142,12 @@
     - Frameworks: 
 		- [Spring Boot](https://spring.io/projects/spring-boot)
 		- [Spring Security](https://spring.io/projects/spring-security)
+    - Testes:
+		- Unitários: [jUnit5](https://junit.org/junit5/)
+		- Mutação e Cobertura: [Pitest](https://pitest.org/) (Testes de mutação)
     - Bibliotecas:
         - [Lombok](https://projectlombok.org/) (Anotações para gerar automaticamente métodos getters, setters, construtores, entre outros, em tempo de compilação)
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
-        - [Pitest](https://pitest.org/) (Testes de mutação)
 - Banco de dados: [MySQL](https://www.mysql.com/)
 - Banco de dados em memória: [Redis](https://redis.io/)
 - Mensageria: [RabbitMQ](https://www.rabbitmq.com/)
