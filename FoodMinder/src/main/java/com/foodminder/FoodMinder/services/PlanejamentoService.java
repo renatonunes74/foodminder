@@ -3,12 +3,14 @@ package com.foodminder.FoodMinder.services;
 import com.foodminder.FoodMinder.domain.planejamento.Planejamento;
 import com.foodminder.FoodMinder.domain.planejamento.PlanejamentoRepository;
 import com.foodminder.FoodMinder.domain.planejamento.RequestPlanejamento;
+//import com.foodminder.FoodMinder.domain.rabbitmq.constantes.RabbitMQConstantes;
 import com.foodminder.FoodMinder.domain.refeicao.Refeicao;
 import com.foodminder.FoodMinder.domain.refeicao.RefeicaoRepository;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ import java.util.Optional;
 
 @Service
 public class PlanejamentoService {
+    private RequestPlanejamento requestPlanejamento;
+   // @Autowired
+    //private RabbitMQService rabbitMQService;
     @Autowired
     private PlanejamentoRepository planejamentoRepository;
     @Autowired
@@ -23,6 +28,7 @@ public class PlanejamentoService {
     @Autowired
     private TipoRefeicaoRepository tipoRefeicaoRepository;
     public ResponseEntity obterTodosPlanejamento() {
+        //this.rabbitMQService.enviaMensagem(RabbitMQConstantes.FILA_PLANEJAMENTO, planejamentoRepository.findAll());
         return ResponseEntity.ok(planejamentoRepository.findAll());
     }
     public ResponseEntity obterPlanejamentoPorId(Integer id) {

@@ -3,7 +3,9 @@ package com.foodminder.FoodMinder.services;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.RequestTipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
+import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,13 +19,13 @@ public class TipoRefeicaoService {
     public ResponseEntity obterTodosTipoRefeicao() {
         return ResponseEntity.ok(tipoRefeicaoRepository.findAll());
     }
-    public ResponseEntity obterTipoRefeicaoPorId(Integer id) {
+    public TipoRefeicao obterTipoRefeicaoPorId(Integer id) {
         Optional<TipoRefeicao> tipoRefeicaoOptional = tipoRefeicaoRepository.findById(id);
         if (tipoRefeicaoOptional.isPresent()) {
             TipoRefeicao tipoRefeicao = tipoRefeicaoOptional.get();
-            return ResponseEntity.ok(tipoRefeicao);
+            return tipoRefeicao;
         } else {
-            return ResponseEntity.notFound().build();
+            throw new RecursoNaoEncontrado("TipoRefeicao not found with id: " + id);
         }
     }
     public ResponseEntity registrarTipoRefeicao(RequestTipoRefeicao requestTipoRefeicao) {

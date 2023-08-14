@@ -24,15 +24,21 @@
 - Focado em auxiliar no controle mais amigável do estoque de comida, e a possibilidade de integração com outras ferramentas!
 
 ## Como usar
-1. Clone o repositório
+1. Execute os containers / Instale:
+	- Redis
+		- `doas docker run -p 6379:6379 --name=redis redis`
+	- MySQL
+		- `doas docker run -p 3306:3306 --name=mysql mysql`
+	- **OBS**: Caso altere a porta, mude também em `Foodminder/src/main/resources/application.properties`
+2. Clone o repositório
     - `git clone https://github.com/renatonunes74/foodminder`
-1. Entre na pasta
+3. Entre na pasta
     - `cd foodminder/FoodMinder`
-1. Rode localmente
+4. Rode localmente
     - CLI / via Terminal:
         - `mvn spring-boot:run`
     - Via IDE (JetBrains, Eclipse...)
-1. Agora é só fazer as requisições para a API
+5. Agora é só fazer as requisições para a API
 
 ### Funcionalidades
 - Usuario
@@ -141,8 +147,10 @@
         - [FlyWay](https://documentation.red-gate.com/fd/flyway-documentation-138346877.html) (Versionamento do banco de dados)
         - [Pitest](https://pitest.org/) (Testes de mutação)
 - Banco de dados: [MySQL](https://www.mysql.com/)
+- Banco de dados em memória: [Redis](https://redis.io/)
+- Mensageria: [RabbitMQ](https://www.rabbitmq.com/)
 - Complementares:
-     - [Mermagic](https://github.com/renatonunes74/mermagic) (Criação automática de diagrama de classes Java usando [Mermaid](https://mermaid.js.org))
+     <!-- - [Mermagic](https://github.com/renatonunes74/mermagic) (Criação automática de diagrama de classes Java usando [Mermaid](https://mermaid.js.org)) -->
      - [Mermerd](https://github.com/KarnerTh/mermerd) (Criação automática de diagrama de relacionamento)
      - [Spring Initializer CLI](https://github.com/renatonunes74/spring_initializr_cli) (Para a criação do Spring Boot)
      - [VHS](https://github.com/charmbracelet/vhs) (Criação de GIF do terminal via código)
