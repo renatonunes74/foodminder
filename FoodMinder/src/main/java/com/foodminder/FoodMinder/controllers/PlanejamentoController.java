@@ -6,6 +6,7 @@ import com.foodminder.FoodMinder.services.PlanejamentoService;
 import com.foodminder.FoodMinder.services.RabbitMQService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

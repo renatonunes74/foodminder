@@ -10,6 +10,7 @@ import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,8 @@ public class PlanejamentoService {
     @Autowired
     private TipoRefeicaoRepository tipoRefeicaoRepository;
     public ResponseEntity obterTodosPlanejamento() {
-        this.rabbitMQService.enviaMensagem(RabbitMQConstantes.FILA_PLANEJAMENTO, planejamentoRepository.findAll());
+        System.out.println("-- NÃO APARECER NOVAMENTE --");
+        //this.rabbitMQService.enviaMensagem(RabbitMQConstantes.FILA_PLANEJAMENTO, planejamentoRepository.findAll());
         return ResponseEntity.ok(planejamentoRepository.findAll());
     }
     public ResponseEntity obterPlanejamentoPorId(Integer id) {
