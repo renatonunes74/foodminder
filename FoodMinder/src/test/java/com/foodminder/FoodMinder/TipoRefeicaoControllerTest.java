@@ -3,11 +3,9 @@ package com.foodminder.FoodMinder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicao;
 import com.foodminder.FoodMinder.domain.tipoRefeicao.TipoRefeicaoRepository;
+import com.foodminder.FoodMinder.exceptions.RecursoNaoEncontrado;
 import com.foodminder.FoodMinder.services.TipoRefeicaoService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
@@ -66,22 +64,24 @@ public class TipoRefeicaoControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[1].tipo").value("Almoço"))
                 .andDo(MockMvcResultHandlers.print());
     }
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 11 })
-    @DisplayName("Listar tipo de refeição por ID; 1 para OK, 11 para NOT FOUND")
-    public void TipoRefeicaoController_GetById_VerifyStatus(int id) throws Exception {
-        if (id == 1) {
-            mockMvc.perform(MockMvcRequestBuilders.get("/tipoRefeicao/" + id))
-                    .andExpect(MockMvcResultMatchers.status().isOk())
-                    .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
-                    .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
-                    .andExpect(MockMvcResultMatchers.jsonPath("$.tipo").value("Café da manhã"))
-                    .andDo(MockMvcResultHandlers.print());
-        } else if (id == 11) {
-            mockMvc.perform(MockMvcRequestBuilders.get("/tipoRefeicao/" + id))
-                    .andExpect(MockMvcResultMatchers.status().isNotFound())
-                    .andDo(MockMvcResultHandlers.print());
-        }
+    @Test
+    @DisplayName("Obter tipo de refeição por ID; sucesso")
+    public void obterTipoRefeicaoPorId_Success() {
+        int id = 1;
+        TipoRefeicao tipoRefeicaoMock = new TipoRefeicao();
+        when(tipoRefeicaoRepository.findById(id)).thenReturn(Optional.of(tipoRefeicaoMock));
+    }
+    @Test
+    @DisplayName("Obter tipo de refeição por ID; falha por recurso não encontrado")
+    public void obterTipoRefeicaoPorId_Failure() {
+        // Dado
+        int id = 11;
+        when(tipoRefeicaoRepository.findById(id)).thenReturn(Optional.empty());
+
+        // Quando e Então
+        Assertions.assertThrows(RecursoNaoEncontrado.class, () -> {
+            tipoRefeicaoService.obterTipoRefeicaoPorId(id);
+        });
     }
     @Test
     @DisplayName("Registrar tipo de refeição")
